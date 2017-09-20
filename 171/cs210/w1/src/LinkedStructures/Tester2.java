@@ -1,6 +1,9 @@
 package LinkedStructures;
 
 // Basit Qureshi Sep 20, 2017 8:37:03 AM
+
+import Nodes.Node;
+
 // Using pointers / references to connect 3 nodes 
 public class Tester2
 {

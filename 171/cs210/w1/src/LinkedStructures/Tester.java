@@ -1,6 +1,9 @@
 package LinkedStructures;
 
 // Basit Qureshi Sep 20, 2017 8:37:03 AM
+
+import Nodes.Node;
+
 // Creating a Linked Structure 
 public class Tester 
 {
