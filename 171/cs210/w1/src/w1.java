@@ -4,6 +4,6 @@ public class w1
 {
     public static void main(String []s)
     {
-        System.out.println("CS210");
+        System.out.println("Welcome to CS210");
     }
 }
