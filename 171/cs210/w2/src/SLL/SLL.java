@@ -49,7 +49,70 @@ public class SLL
 //3 cases would apply. begining, middle or the end.
     public boolean remove(int key)
     {
+        //we return true if node containing key is sucessfully removed; false otherwise
+        boolean RETURN = false;
+        //check if list is empty
+        if(Head == null)
+            return RETURN;
+        //check if list has only one node
+        if(size==1)
+        {
+            //check if this node is the candidate
+            if(Head.val == key)
+            {
+                Head = null;
+                size--;
+                RETURN = true;
+            }
+            return RETURN;
+        }
         
+        //now we have atleast 2 nodes in the list
+        //look for the candidate
+        //remember the previous node;
+        
+        
+        
+        //case 1. if Head is the candidate node
+        
+        //case 2. if candidate is in the middle
+        
+        //case 3. if candidate is the last one!
+        
+        
+        return RETURN;
+    }
+    
+//update method takes two params old and key 
+    public boolean update(int old, int key)
+    {
+        if(Head == null)
+            return false;
+        
+        Node temp = Head;
+        while(temp!=null)
+        {
+            if(temp.val == old)
+            {
+                temp.val = key;
+                return true;
+            }
+            temp = temp.next;
+        }
+        return false;
+    }
+    
+//toString method
+    public String toString()
+    {
+        String out = "";
+        Node temp = Head;
+        while(temp!=null)
+        {
+            out = out + " " + temp.val;
+            temp = temp.next;
+        }
+        return out;
     }
     
 }
