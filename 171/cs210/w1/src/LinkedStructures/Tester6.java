@@ -14,9 +14,9 @@ public class Tester6
         Node Head = new Node(1);
         Node temp = Head;
 
-        for(int i=1; i < SIZE; i++)
+        for(int i=2; i < SIZE; i++)
         {
-            temp.next = new Node(i+1);
+            temp.next = new Node(i);
             temp = temp.next;
         }
         //Head points to the first node in the chain

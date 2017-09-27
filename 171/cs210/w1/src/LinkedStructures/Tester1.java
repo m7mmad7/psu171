@@ -19,6 +19,8 @@ public class Tester1
         System.out.println(k1.val);
         System.out.println(k2.val);
         System.out.println(k1.next.val);
+        System.out.println(k1.next.next);
+        
         
     }
 }
