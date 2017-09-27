@@ -71,16 +71,36 @@ public class SLL
         //look for the candidate
         //remember the previous node;
         
+        Node temp=Head, P=null, N;
+        while(temp!=null)
+        {
+            if(temp.val==key) // found it!
+                break;
+            
+            P=temp;
+            temp = temp.next;
+        }
         
+        if(temp==null)// didn't find it
+            return false;
         
+
         //case 1. if Head is the candidate node
+        if(temp==Head)
+        {
+            Head = temp.next;
+            
+        }
         
-        //case 2. if candidate is in the middle
+        //case 2. if candidate is in the middle or the last!
+        else 
+        {
+            P.next= temp.next;
+
+        }
+        size--;
         
-        //case 3. if candidate is the last one!
-        
-        
-        return RETURN;
+        return true;
     }
     
 //update method takes two params old and key 
