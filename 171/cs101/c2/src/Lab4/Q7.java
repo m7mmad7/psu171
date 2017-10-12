@@ -18,6 +18,8 @@ public class Q7
         System.out.println("Enter annual interest rate in percentage:");
         interest= In.nextDouble();
         
+        interest = interest / 100;
+        
         System.out.println("Enter number of years:");
         years= In.nextDouble();
         

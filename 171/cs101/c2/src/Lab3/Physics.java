@@ -18,6 +18,7 @@ public class Physics
         t = Input.nextDouble();
         double a = (v1-v0) / t;
         System.out.println("a= " + a);
+        System.out.printf("a=%10.4f",a);
         
         
     }

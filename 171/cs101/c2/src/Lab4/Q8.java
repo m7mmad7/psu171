@@ -21,7 +21,7 @@ public class Q8
         double price = In.nextDouble();
         
         
-        double cost= miles / mpg * price;
+        double cost= (miles / mpg) * price;
 
         System.out.printf("The cost of driving is $%8.2f" , cost);
     }
