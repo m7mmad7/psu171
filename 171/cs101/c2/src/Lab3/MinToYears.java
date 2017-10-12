@@ -22,7 +22,8 @@ public class MinToYears
         System.out.println("Years = " + y + " and " + r_days + 
                 " days approx.");
         
-        
+        double x = 10;
+        System.out.println(x++ + 1);
     }
     
 }
