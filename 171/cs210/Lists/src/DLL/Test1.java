@@ -8,6 +8,7 @@ public class Test1
     {
         DLL D = new DLL();
         
+        System.out.println("This is the DoubleList program for CS210");
         D.insert(new Node(10));
         D.insert(new Node(20));
         D.insert(new Node(30));
