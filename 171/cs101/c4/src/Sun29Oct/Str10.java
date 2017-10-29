@@ -18,7 +18,7 @@ public class Str10
         
         String input = In.next();
         int pos = Integer.parseInt(input);
-        
+        //converts string to int
         
         System.out.println("You entered " + pos);
         
