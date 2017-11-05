@@ -87,7 +87,7 @@ public class Q8
         {
             case 'a': c1c = '\u0627';break;
             case 'b': c1c = '\u0628';break;
-            case 'c': c1c = '\u067a';break;
+            case 'c': c1c = '\u062a';break;
             case 'd': c1c = '\u062b';break;
             case 'e': c1c = '\u062c';break;
             case 'f': c1c = '\u062d';break;
