@@ -16,11 +16,13 @@ public class BSTree
         N.left=N.right=N.parent=null;
         if(Root==null)
         {
-            size++;
+            size = 1;
             Root = N;
             
             return;
         }
+        //search tree to make sure it N exists
+        
         Node temp = Root;
         while(true)
         {
@@ -62,26 +64,33 @@ public class BSTree
             return temp;
         while(true)
         {
-            if(temp.id<id)
+            if(id > temp.id)
             {
                 //go right
                 if(temp.right==null)
                     return null;
                 temp = temp.right;      
             }
-            else
+            else if(id < temp.id)
             {
                 //go left
                 if(temp.left==null)
                     return null;
                 temp = temp.left;
             }
+            else //found it!
+            {
+                return temp;
+            }
+                   
         }
         
     }
-    /*
+    
     public String PreOrder()
     {
+        //bad code... doesnt work!
+        //scroll down for a more efficient code
         String Str = "";
         Node temp = Root;
         if(temp==null)
@@ -101,7 +110,7 @@ public class BSTree
         
         
     }
-    */
+    
     public String PreOrder(Node temp)
     {
         if(temp==null)
@@ -131,17 +140,52 @@ public class BSTree
         {
             return false;
         }
-        Node find = search(key);
+        Node find = search(key); //using search
         if(find==null)
         {
             //didnt find it!
             return false;
         }
-        if(find==Root)
+        else if (find == Root)
         {
+            //if find is the root.
+            
+            //if find has no children
+            if(find.left==null && find.right==null)
+            {
+                Root=null;
+                return true;
+            }
+            else if ((find.left!=null && find.right==null) ||
+                    (find.left==null && find.right!=null))
+            {
+                // if find is the root and has 1 child
+                // this child becomes the new Root;
+                if(Root.left==null)
+                    Root = Root.right;
+                else
+                    Root = Root.left;
+                Root.parent=null;
+            }
+            //else both children exist.
+            else
+            {
+                // we have to find a candidate node that will serve as new root
+                // candidate is smallest valued node on the right of existing root
+                
+                // we will update this code later!!!
+                
+            }
             
         }
+        
         //we found the node to be removed!
+        //there are 3 cases
+        // case 0: no child
+        // case 1: 1 child
+        // case 2: 2 children
+        
+        
         //case 0; no child
         if(find.left==null && find.right==null)
         {
@@ -181,64 +225,83 @@ public class BSTree
         //two children
         else
         {
+            //candidate is a reference to the best candiate. In this case 
+            //the smallest valued node on the right of find
+            
+            //we have 3 scenarios...
+            //1. the candidate IS the right child of find.. 
+            //2. the candidate is a grand child (at any depth) of the right child. Candidate has NO children
+            //3. the candidate is a grand child (at any depth) of the right child. Candidate has a right children
+            
+            //lets find the candidate
             Node candidate = find.right;
             while(candidate.left!=null)
                 candidate = candidate.left;
-            //candidate is point to the best candiate
-            //check if candiate has a child
-            if(candidate.right==null)
+            
+            // we need to check which scenario applies
+            //scenario 1
+            if(find.right==candidate)
+            {
+                candidate.left=find.left;
+                find.left.parent = candidate;
+                candidate.parent = find.parent;
+                
+                //now re-assign candidate (as a child) to the parent of find
+                if(find.parent.right==find)
+                    candidate.parent.right= candidate;
+                else
+                    candidate.parent.left=candidate;
+            }
+            
+            //scenario 2. check if candiate has no children
+            else if(candidate.right==null)
             {
                 //candidate has no child
-                candidate.parent.left=null;
+                //readjust candidate's environment
+                candidate.parent.left=null; // detach candidate
+                
+                //copy find's children and parent to candidate
                 candidate.left=find.left;
                 candidate.right=find.right;
                 candidate.parent=find.parent;
+                
+                //now re-attached find.parent to candidate. we have to figure out
+                //if find was the left or right child!
                 if(candidate.parent.left==find)
                     find.parent.left=candidate;
                 else
                     find.parent.right=candidate;
                 
                 find=null;
-                size--;
-                return true;
-                
             }
             else
             {
-                //check if candidate is the right child of find
-                if(find.right==candidate)
-                {
-                    candidate.left=find.left;
-                    find.left.parent = candidate;
-                    candidate.parent = find.parent;
-                    if(find.parent.right==find)
-                        candidate.parent.right= candidate;
-                    else
-                        candidate.parent.left=candidate;
-                    size--;
-                    return true;
-                }
-                //this is case 1
+                //here candidate obviously has a right child!!
+                //scenario 3!!
+                
+                // Strategy: 2 steps
+                // step 1. remove node candidate from the tree... lets use case 1 of the remove
+                // step 2. re-attach candidate in the appropriate position
+                
+                //temporarily store candidate in a new node temp
                 Node temp = new Node(candidate.id);
+                
+                //remove candidate from tree
                 remove(candidate.id);
+                
+                //re-attach left and right children of find to temp
                 temp.left = find.left;
                 temp.right=find.right;
+                
+                //reattach temp to appropriate parent.left or .right
                 if(find.parent.right==find)
-                        temp.parent.right= temp;
-                    else
-                        temp.parent.left=temp;
-                    size--;
-                    return true;        
-                
-                
-                
+                    temp.parent.right= temp;
+                else
+                    temp.parent.left=temp;
+       
             }
-            
-            
+            size--;
+            return true; 
         }
-        
     }
-    
-    
-    
 }
