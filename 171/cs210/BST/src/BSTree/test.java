@@ -15,5 +15,36 @@ public class test
         System.out.println(BST.InOrder(BST.Root));
         System.out.println(BST.PostOrder(BST.Root));
         System.out.println(BST.PreOrder(BST.Root));
+        
+        //testing remove
+        // case 0
+        BST.remove(15);
+        System.out.println(BST.InOrder(BST.Root));
+        
+        //case 1
+        BST.insert(new Node(18));
+        BST.remove(18);
+        System.out.println(BST.InOrder(BST.Root));
+        
+        //case 2
+        BST.insert(new Node(30));
+        BST.insert(new Node(40));
+        BST.insert(new Node(25));
+        
+        //scenario 1
+        BST.remove(20);
+        System.out.println(BST.InOrder(BST.Root));
+        
+        //scenario 2
+        BST.remove(30);
+        System.out.println(BST.InOrder(BST.Root));
+        
+        //scenario 3
+        BST.insert(new Node(20));
+        BST.insert(new Node(22));
+        
+        BST.remove(25);
+        System.out.println(BST.InOrder(BST.Root));
+        
     }
 }
