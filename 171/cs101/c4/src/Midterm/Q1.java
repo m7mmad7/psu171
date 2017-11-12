@@ -15,7 +15,7 @@ public class Q1
         
         //part 3
         System.out.printf("%-5.2f", Math.pow(2, 2));
-        
+        //>4.00 <
         
         System.out.println();
         //part 4
