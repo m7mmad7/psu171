@@ -12,15 +12,13 @@ public class test
         A.insert(10);
         A.insert(5);
         A.insert(20);
-        A.insert(8);
-        A.insert(9);
+        A.insert(15);
+        A.insert(11);
+        A.insert(30);
         
+        A.setHeights(A.root);
         
-        
-        A.insert(22);
-        
-        A.insert(25); // problem
-        System.out.println(A.inorder(A.root));
+        System.out.println(A.isAVL(A.root));
         
 
         

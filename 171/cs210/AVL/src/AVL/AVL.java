@@ -370,4 +370,19 @@ public class AVL
         }
         return A.height;
     }
+    public boolean isAVL(AVLNode A)
+    {
+        //This method is called only after setHeights(A) has been called..
+        
+        if(A.height<2)
+            return true;
+        else if(A.left==null)
+            return A.right.height + 1 < 2 ? true : false; 
+        else if(A.right==null)
+            return A.left.height + 1 < 2 ? true : false;
+        else if(isAVL(A.left) && isAVL(A.right))
+            return Math.abs(A.left.height - A.right.height)<2 ? true : false;
+        else 
+            return false;   
+    }
 }
