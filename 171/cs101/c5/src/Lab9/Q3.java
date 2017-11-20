@@ -31,6 +31,7 @@ public class Q3
                 {
                     System.out.println(preFix + " found at position " + pos);
                     FOUND = true;
+                    currentWord = "";
                     break;
                 }
                 pos = i+1;
